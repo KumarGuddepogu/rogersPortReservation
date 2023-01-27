@@ -1,0 +1,193 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %} Reservation Page {% endblock %}
+
+
+{% block content %}
+    <br><br><br>
+{% include 'partials/topnav.html' %}
+    <br><br>
+      <div class="container-fluid">
+{#                    <button id = "downloadexcel">Export to excel</button>#}
+            <br><br>
+                     <table class="table table-bordered" id="reservation" style="text-align: center;">
+                        <thead class="table-success">
+                        <tr>
+                            <th> Network</th>
+                            <th>Router_Port_Id</th>
+                            <th>User</th>
+                            <th>Project Number</th>
+                            <th>Project Name</th>
+                            <th>Target Date</th>
+                            <th>Order Date</th>
+
+                        </tr>
+                        </thead>
+                          {% for cgwitem in cgwitems %}
+                    <tr>
+                    <td class="bg-white">CGW</td>
+                   <td class="bg-white">{{ cgwitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ cgwitem.user}}</td>
+                    <td class="bg-white">{{ cgwitem.project_number }}</td>
+                    <td class="bg-white">{{ cgwitem.project_name }}</td>
+                    <td class="bg-white">{{ cgwitem.target_date }}</td>
+                    <td class="bg-white">{{ cgwitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                     {% for dgwitem in dgwitems %}
+                    <tr>
+                     <td class="bg-white">DGW</td>
+                   <td class="bg-white">{{ dgwitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ dgwitem.user}}</td>
+                    <td class="bg-white">{{ dgwitem.project_number }}</td>
+                    <td class="bg-white">{{ dgwitem.project_name }}</td>
+                    <td class="bg-white">{{ dgwitem.target_date }}</td>
+                    <td class="bg-white">{{ dgwitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                     {% for csdeitem in csdeitems %}
+                    <tr>
+                     <td class="bg-white">CSDE</td>
+                   <td class="bg-white">{{ csdeitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ csdeitem.user}}</td>
+                    <td class="bg-white">{{ csdeitem.project_number }}</td>
+                    <td class="bg-white">{{ csdeitem.project_name }}</td>
+                    <td class="bg-white">{{ csdeitem.target_date }}</td>
+                    <td class="bg-white">{{ csdeitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for dsdeitem in dsdeitems %}
+                    <tr>
+                     <td class="bg-white">DSDE</td>
+                   <td class="bg-white">{{ dsdeitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ dsdeitem.user}}</td>
+                    <td class="bg-white">{{ dsdeitem.project_number }}</td>
+                    <td class="bg-white">{{ dsdeitem.project_name }}</td>
+                    <td class="bg-white">{{ dsdeitem.target_date }}</td>
+                    <td class="bg-white">{{ dsdeitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for igwitem in igwitems %}
+                    <tr>
+                     <td class="bg-white">IGW</td>
+                   <td class="bg-white">{{ igwitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ igwitem.user}}</td>
+                    <td class="bg-white">{{ igwitem.project_number }}</td>
+                    <td class="bg-white">{{ igwitem.project_name }}</td>
+                    <td class="bg-white">{{ igwitem.target_date }}</td>
+                    <td class="bg-white">{{ igwitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for mxitem in mxitems %}
+                    <tr>
+                     <td class="bg-white">MX</td>
+                   <td class="bg-white">{{ mxitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ mxitem.user}}</td>
+                    <td class="bg-white">{{ mxitem.project_number }}</td>
+                    <td class="bg-white">{{ mxitem.project_name }}</td>
+                    <td class="bg-white">{{ mxitem.target_date }}</td>
+                    <td class="bg-white">{{ mxitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for sigritem in sigritems %}
+                    <tr>
+                     <td class="bg-white">SIGR</td>
+                   <td class="bg-white">{{ sigritem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ sigritem.user}}</td>
+                    <td class="bg-white">{{ sigritem.project_number }}</td>
+                    <td class="bg-white">{{ sigritem.project_name }}</td>
+                    <td class="bg-white">{{ sigritem.target_date }}</td>
+                    <td class="bg-white">{{ sigritem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for wasitem in wasitems %}
+                    <tr>
+                     <td class="bg-white">WAS</td>
+                   <td class="bg-white">{{ wasitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ wasitem.user}}</td>
+                    <td class="bg-white">{{ wasitem.project_number }}</td>
+                    <td class="bg-white">{{ wasitem.project_name }}</td>
+                    <td class="bg-white">{{ wasitem.target_date }}</td>
+                    <td class="bg-white">{{ wasitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for wgritem in wgritems %}
+                    <tr>
+                     <td class="bg-white">WGR</td>
+                   <td class="bg-white">{{ wgritem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ wgritem.user}}</td>
+                    <td class="bg-white">{{ wgritem.project_number }}</td>
+                    <td class="bg-white">{{ wgritem.project_name }}</td>
+                    <td class="bg-white">{{ wgritem.target_date }}</td>
+                    <td class="bg-white">{{ wgritem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for wpritem in wpritems %}
+                    <tr>
+                     <td class="bg-white">WPR</td>
+                   <td class="bg-white">{{ wpritem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ wpritem.user}}</td>
+                    <td class="bg-white">{{ wpritem.project_number }}</td>
+                    <td class="bg-white">{{ wpritem.project_name }}</td>
+                    <td class="bg-white">{{ wpritem.target_date }}</td>
+                    <td class="bg-white">{{ wpritem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                      {% for wrsitem in wrsitems %}
+                    <tr>
+                     <td class="bg-white">WRS</td>
+                   <td class="bg-white">{{ wrsitem.Router_Port_id}}</td>
+                    <td class="bg-white">{{ wrsitem.user}}</td>
+                    <td class="bg-white">{{ wrsitem.project_number }}</td>
+                    <td class="bg-white">{{ wrsitem.project_name }}</td>
+                    <td class="bg-white">{{ wrsitem.target_date }}</td>
+                    <td class="bg-white">{{ wrsitem.order_date }}</td>
+
+                    </tr>
+                {% endfor %}
+                     </table>
+      </div>
+{% endblock %}
+{% block json %}
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#reservation').DataTable(
+    {
+       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+	        dom: 'Bfltrip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    title: 'Excel MK',
+                    text:'Export to Excel'
+                },
+                {
+                    extend: 'csvHtml5',
+                    title: 'CSV MK',
+                    className: 'btn_csv',
+                    text: 'Export to CSV'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: 'PDF MK',
+                    text: 'Export to PDF'
+                },
+	       ]
+	    });
+
+        $('.btn_csv').attr("class","btn btn-success");
+
+} );
+</script>
+{% endblock %}

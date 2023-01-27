@@ -1,0 +1,223 @@
+{% extends 'partials/base.html' %}
+{% block title %} Available Ports {% endblock %}
+
+{% block content %}
+    <br><br><br>
+{% include 'partials/topnav.html' %}
+    <br><br>
+<div class="container-fluid">
+      <h3 class="text-center text-danger">Which Network Are You Looking To Reserve Ports From?</h3>
+    <br>
+        <div class="row">
+
+
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href="{% url 'inventory_app-cgw' %}" class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        CGW
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-csde' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary mb-1">
+                                        cSDE
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href="{% url 'inventory_app-dgw' %}" class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        DGW
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-dsde' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary mb-1">
+                                        dSDE
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-igw' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        IGW
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-mx' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        MX
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="#" class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        SAR
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-sigr' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        SIGR
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-was' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        WAS
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-wgr' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        WGR
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-wpr_details' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        WPR
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-wrs' %} class="custom-card">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        WRS
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+            </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% load static %}
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" aria-label="Second navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://www.rogers.com/"><img src="{% static 'logo.png' %}" width="160" height="30" alt="Rogers"> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        {% if user.is_authenticated %}
+         <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link active" aria-current="page" href="{% url 'inventory_app-index' %}">Dashboard <span
+{#            <a class="nav-link active" aria-current="page" href="#">Dashboard <span#}
+                    class="sr-only"></span></a>
+          </li>
+        </ul>
+         <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+{#            <a class="nav-link active"  href="#">{{ kumar }} Profile <span#}
+            <a class="nav-link active"  href="{% url 'user-profile' %}">{{ user.username }} Profile <span
+                    class="sr-only"></span></a>
+          </li>
+              <li class="nav-item active">
+{#            <a class="nav-link text white"  href="#">Logout <span#}
+            <a class="nav-link text white"  href="{% url 'user-logout' %}">Logout <span
+                 class="sr-only"></span></a>
+          </li>
+          </ul>
+    {% else %}
+         <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+{#            <a class="nav-link active"  href="#">Register <span#}
+            <a class="nav-link active"  href="{% url 'user-register' %}">Register <span
+                    class="sr-only"></span></a>
+          </li>
+              <li class="nav-item active">
+{#            <a class="nav-link text white"  href="#">Login <span#}
+            <a class="nav-link text white"  href="{% url 'user-login' %}">Login <span
+                 class="sr-only"></span></a>
+          </li>
+          </ul>
+
+          {% endif %}
+    </div>
+</nav>

@@ -1,0 +1,112 @@
+{% extends 'inventory_app/cisco.html' %}
+{% load static %}
+
+
+
+{% block reserve-button %}
+    <div class="col-sm-2">
+{#                        <a class="text-decoration-none text-dark" href="#">#}
+                        <a class="text-decoration-none text-dark" href="{% url 'inventory_app-cgw_form' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center text-success">
+                                    <h4>Make Reservation </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+{% endblock %}
+{% block json %}
+{<script>
+
+
+$(document).ready(function (){
+            $('#example thead tr')
+                .clone(true)
+                .addClass('filters')
+                .appendTo('#example thead');
+
+            var table=$('#example').DataTable({
+                "ajax": "/cgw_json",
+                "columns": [
+                    {"data": "Router_Ports"},
+                    {"data": "Site"},
+                    {"data": "Router"},
+                    {"data": "Slot"},
+                    {"data": "Port_Name"},
+                    {"data": "Port_Status"},
+                    {"data": "Negotiated_Speed"},
+                    {"data": "Bandwidth"},
+                    {"data": "Optics"},
+                    {"data": "Card"}
+                ],
+                paging: true,
+                pageLength:10,
+                autoWidth: true,
+                lengthChange: true,
+                 lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All']
+                ],
+                searching: true,
+                bInfo: true,
+                bSort: true,
+
+
+                initComplete: function(){
+                    var api=this.api();
+
+                    api
+                        .columns([0,1,2,3,4,5,6,7,8,9,10])
+                        .eq(0)
+                    .each(function(colIdx){
+                            var filters_th=$('.filters th')
+                            var cell = filters_th.eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            $(cell).html('<input type="text" placeholder="' + title + '"/>');
+
+                            $(
+                                'input',
+                                filters_th.eq($(api.column(colIdx).header()).index())
+                            )
+                            .off('keyup change')
+                                .on('keyup change',function(e) {
+                                    e.stopPropagation();
+
+                                    $(this).attr('title', $(this).val());
+                                    var regexr= '({search})';
+
+                                    var cursorPosition = this.selectionStart;
+
+                                    api
+                                        .column(colIdx)
+                                        .search(
+                                            this.value != ''
+                                                ? regexr.replace('{search}','((('+this.value+')))')
+                                                : '',
+                                            this.value !='',
+                                            this.value == ''
+
+                                        )
+                                    .draw();
+                                 $(this)
+                                     .focus()[0]
+                                     .setSelectionRange(cursorPosition,cursorPosition);
+                                });
+                        });
+                }
+            });
+            $('#example tbody').on('click', 'tr', function () {
+        $(this).toggleClass('selected');
+    });
+
+
+
+
+        });
+
+
+    </script>
+
+{% endblock %}

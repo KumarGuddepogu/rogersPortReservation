@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}Make Reservation{% endblock %}
+
+{% block content %}
+    <br><br><br>
+    {% include 'partials/topnav.html' %}
+    <br><br><br>
+    <div class="container">
+<h1>Add an Entry</h1>
+
+    {% for msg in messages %}
+        <div class="alert alert-success" role="alert">
+  {{ msg }}
+</div>
+
+    {% endfor %}
+<br>
+<form id="post-form" method="POST" action="{% url 'inventory_app-cgw_form' %}">
+    {% csrf_token %}
+            {{ form|crispy }}
+
+{#    <button id="add-form" type="button" style="background-color: #bdd8b2">Add Another Port</button>#}
+{#    <br><br><br>#}
+    <br><br>
+   <input type="submit" value="Submit">
+
+
+</form>
+    </div>
+    {% block json %}
+        <script>
+
+        $(document).ready(function() {
+
+    $('#id_Router_Port_id').select2({
+        closeOnSelect:false
+    });
+});
+        </script>
+        {% endblock %}
+{% endblock %}
+
+

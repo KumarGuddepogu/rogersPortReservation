@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+{% block title %}{{ header }}{% endblock %}
+
+ {% block content %}
+      <br><br><br>
+
+{#      <div class="card shadow mb-4">#}
+                <h4 class="m-lg-3 font-weight-bold text-dark" style="text-align: center">Currently Viewing {{ header }}</h4>
+{#      </div>#}
+
+                <h4 class="m-lg-3 font-weight-bold text-secondary">All Ports</h4>
+
+      <div class="container-fluid">
+                     <table class="table table-bordered" id="example" style="text-align: center;">
+                        <thead class="table-success">
+                        <tr>
+                            <th>Router Ports</th>
+                            <th>Site</th>
+                            <th>Router</th>
+                            <th>Slot</th>
+                            <th>Port Name</th>
+                            <th>Port Status</th>
+                            <th>Negotiated Speed</th>
+                            <th>Bandwidth</th>
+                            <th>Optics</th>
+                            <th>Card</th>
+                        </tr>
+                        </thead>
+
+
+                    </table>
+
+        </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'partials/base.html' %}
+{% block title %} User Page {% endblock %}
+
+
+{% block content %}
+    <br><br><br>
+{% include 'partials/topnav.html' %}
+    <br><br>
+     <div class="container-fluid">
+                     <table class="table table-bordered" id="reservation" style="text-align: center;">
+                        <thead class="table-success">
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+
+                </tr>
+            {% for user_item in user_items %}
+
+                    <tr >
+                   <td class="bg-white">{{ user_item.username}}</td>
+                    <td class="bg-white">{{ user_item.email}}</td>
+                    </tr>
+            {% endfor %}
+
+{#                {% for profile_item in profile_items %}#}
+{#                    <td class="bg-white">{{ profile_item.phone}}</td>#}
+{#                        {% endfor %}#}
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
