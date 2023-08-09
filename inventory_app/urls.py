@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 from .views import *
@@ -41,9 +43,19 @@ urlpatterns = [
     path('wpr_form/', wpr_form, name='inventory_app-wpr_form'),
     path('wrs_form/', wrs_form, name='inventory_app-wrs_form'),
     path('wpr_details/', views.wpr_details, name='inventory_app-wpr_details'),
+    path('wrs_details/', views.wrs_details, name='inventory_app-wrs_details'),
+    path('wgr_details/', views.wgr_details, name='inventory_app-wgr_details'),
+    path('was_details/', views.was_details, name='inventory_app-was_details'),
+    path('sigr_details/', views.sigr_details, name='inventory_app-sigr_details'),
+    path('mx_details/', views.mx_details, name='inventory_app-mx_details'),
+    path('igw_details/', views.igw_details, name='inventory_app-igw_details'),
+    path('dsde_details/', views.dsde_details, name='inventory_app-dsde_details'),
+    path('csde_details/', views.csde_details, name='inventory_app-csde_details'),
+    path('dgw_details/', views.dgw_details, name='inventory_app-dgw_details'),
+    path('cgw_details/', views.cgw_details, name='inventory_app-cgw_details'),
 
 
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler500 = 'inventory_app.views.error_500'

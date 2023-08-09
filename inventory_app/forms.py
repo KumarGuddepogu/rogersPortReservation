@@ -5,6 +5,7 @@ from .models import *
 
 
 class CgwReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=CGW.objects.filter(Port_Status='Available'))
     class Meta:
         model = CgwReservations
         fields = [
@@ -13,11 +14,10 @@ class CgwReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
 
         widgets = {
-            'Router_Port_id': forms.SelectMultiple(),
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
                                            attrs={'class': 'form-control', 'placeholder': 'Select a date',
                                                   'type': 'date'}),
@@ -27,8 +27,8 @@ class CgwReservationForm(ModelForm):
         }
 
 
-
 class CsdeReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=cSDE.objects.filter(Port_Status='Available'))
     class Meta:
         model = CsdeReservations
         fields = [
@@ -37,7 +37,7 @@ class CsdeReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id'
+            'Router_Ports'
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -50,6 +50,7 @@ class CsdeReservationForm(ModelForm):
 
 
 class DgwReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=DGW.objects.filter(Port_Status='Available'))
     class Meta:
         model = DgwReservations
         fields = [
@@ -58,7 +59,7 @@ class DgwReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -71,6 +72,7 @@ class DgwReservationForm(ModelForm):
 
 
 class DsdeReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=dSDE.objects.filter(Port_Status='Available'))
     class Meta:
         model = DsdeReservations
         fields = [
@@ -79,7 +81,7 @@ class DsdeReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -92,6 +94,7 @@ class DsdeReservationForm(ModelForm):
 
 
 class IgwReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=IGW.objects.filter(Port_Status='Available'))
     class Meta:
         model = IgwReservations
         fields = [
@@ -100,7 +103,7 @@ class IgwReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -113,6 +116,7 @@ class IgwReservationForm(ModelForm):
 
 
 class MxReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=MX.objects.filter(Port_Status='Available'))
     class Meta:
         model = MxReservations
         fields = [
@@ -121,7 +125,7 @@ class MxReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -134,6 +138,7 @@ class MxReservationForm(ModelForm):
 
 
 class SigrReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=SIGR.objects.filter(Port_Status='Available'))
     class Meta:
         model = SigrReservations
         fields = [
@@ -142,7 +147,7 @@ class SigrReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -155,6 +160,7 @@ class SigrReservationForm(ModelForm):
 
 
 class WasReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=WAS.objects.filter(Port_Status='Available'))
     class Meta:
         model = WasReservations
         fields = [
@@ -163,7 +169,7 @@ class WasReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -176,6 +182,7 @@ class WasReservationForm(ModelForm):
 
 
 class WgrReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=WGR.objects.filter(Port_Status='Available'))
     class Meta:
         model = WgrReservations
         fields = [
@@ -184,7 +191,7 @@ class WgrReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id'
+            'Router_Ports'
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -197,6 +204,7 @@ class WgrReservationForm(ModelForm):
 
 
 class WprReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=WPR.objects.filter(Port_Status='Available'))
     class Meta:
         model = WprReservations
         fields = [
@@ -205,7 +213,7 @@ class WprReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),
@@ -218,6 +226,8 @@ class WprReservationForm(ModelForm):
 
 
 class WrsReservationForm(ModelForm):
+    Router_Ports = forms.ModelChoiceField(queryset=WRS.objects.filter(Port_Status='Available'))
+
     class Meta:
         model = WrsReservations
         fields = [
@@ -226,7 +236,7 @@ class WrsReservationForm(ModelForm):
             'project_name',
             'target_date',
             'order_date',
-            'Router_Port_id',
+            'Router_Ports',
         ]
         widgets = {
             'target_date': forms.DateInput(format=('%m/%d/%Y'),

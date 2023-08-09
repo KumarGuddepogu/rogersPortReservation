@@ -1,5 +1,6 @@
 body{
-    background: rgb(230, 227, 227);
+    /*background: rgb(240,240,240);*/
+    background: linear-gradient(to bottom, #f0f5ff, #cfe3ff);
 }
 .my-card:hover{
     transform: scale(1.1);
@@ -50,8 +51,47 @@ div.dataTables_wrapper div.dataTables_length select {
     display: inline-block;
 }
 
+table.dataTable tbody th, table.dataTable tbody td {
+  border: 2px solid black;
+}
+
+table.dataTable thead th {
+  border: 2px solid black;
+}
+
 #id_Router_Port_id{
     width: 100%;
 }
 
 .button{width:100%}
+
+.my-table-class {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.my-table-class th, .my-table-class td {
+  border: 2px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.my-table-class th {
+  background-color: lightgrey;
+}
+
+.my-table-class tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.my-table-class tr:hover {
+  background-color: #e6e6e6;
+}
+
+.my-table-class th {
+  border: 2px solid black;
+}
+
+
+
+

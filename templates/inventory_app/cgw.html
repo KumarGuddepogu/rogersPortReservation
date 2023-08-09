@@ -28,12 +28,14 @@ $(document).ready(function (){
             var table=$('#example').DataTable({
                 "ajax": "/cgw_json",
                 "columns": [
+                    {#{"data": "id"},#}
                     {"data": "Router_Ports"},
                     {"data": "Site"},
                     {"data": "Router"},
                     {"data": "Slot"},
                     {"data": "Port_Name"},
                     {"data": "Port_Status"},
+                    {"data": "Categories"},
                     {"data": "Negotiated_Speed"},
                     {"data": "Bandwidth"},
                     {"data": "Optics"},
@@ -56,7 +58,7 @@ $(document).ready(function (){
                     var api=this.api();
 
                     api
-                        .columns([0,1,2,3,4,5,6,7,8,9,10])
+                        .columns([0,1,2,3,4,5,6,7,8,9,10,11])
                         .eq(0)
                     .each(function(colIdx){
                             var filters_th=$('.filters th')

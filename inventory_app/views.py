@@ -6,6 +6,8 @@ from django.views.generic import TemplateView
 
 import user.models
 import pandas as pd
+
+from inventory_app import snapshot, cisco_snapshot
 from inventory_app.forms import *
 from inventory_app.models import *
 from user.models import Profile
@@ -90,7 +92,7 @@ def cgw_form(request):
     if request.POST:
         form = CgwReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = CGW.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-cgw_form')
@@ -105,6 +107,19 @@ def cgw_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/cgw_reservation.html', context)
+
+
+def cgw_details(request):
+    queryset=CGW.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = cisco_snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'CGW',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/cgw_details.html', context)
 
 
 @login_required()
@@ -130,7 +145,7 @@ def csde_form(request):
     if request.POST:
         form = CsdeReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = cSDE.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-csde_form')
@@ -145,6 +160,19 @@ def csde_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/csde_reservation.html', context)
+
+
+def csde_details(request):
+    queryset=cSDE.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'CSDE',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/csde_details.html', context)
 
 
 @login_required()
@@ -170,7 +198,7 @@ def dgw_form(request):
     if request.POST:
         form = DgwReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = DGW.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-dgw_form')
@@ -185,6 +213,19 @@ def dgw_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/dgw_reservation.html', context)
+
+
+def dgw_details(request):
+    queryset=DGW.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = cisco_snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'DGW',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/dgw_details.html', context)
 
 
 def dsde(request):
@@ -209,7 +250,7 @@ def dsde_form(request):
     if request.POST:
         form = DsdeReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = dSDE.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-dsde_form')
@@ -224,6 +265,19 @@ def dsde_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/dsde_reservation.html', context)
+
+
+def dsde_details(request):
+    queryset=dSDE.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'DSDE',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/dsde_details.html', context)
 
 
 def igw(request):
@@ -248,7 +302,7 @@ def igw_form(request):
     if request.POST:
         form = IgwReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = IGW.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-igw_form')
@@ -263,6 +317,19 @@ def igw_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/igw_reservation.html', context)
+
+
+def igw_details(request):
+    queryset=IGW.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'IGW',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/igw_details.html', context)
 
 
 def mx(request):
@@ -288,7 +355,7 @@ def mx_form(request):
         form = MxReservationForm(request.POST)
         if form.is_valid():
             form.save()
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = MX.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
         # return redirect('inventory_app-mx_form')
         messages.success(request, "Port reserved successfully")
@@ -302,6 +369,19 @@ def mx_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/mx_reservation.html', context)
+
+
+def mx_details(request):
+    queryset=MX.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'MX',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/mx_details.html', context)
 
 
 def sigr(request):
@@ -326,7 +406,7 @@ def sigr_form(request):
     if request.POST:
         form = SigrReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = SIGR.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-sigr_form')
@@ -341,6 +421,19 @@ def sigr_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/sigr_reservation.html', context)
+
+
+def sigr_details(request):
+    queryset=SIGR.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'SIGR',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/sigr_details.html', context)
 
 
 def was(request):
@@ -365,7 +458,7 @@ def was_form(request):
     if request.POST:
         form = WasReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = WAS.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-was_form')
@@ -380,6 +473,19 @@ def was_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/was_reservation.html', context)
+
+
+def was_details(request):
+    queryset=WAS.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'WAS',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/was_details.html', context)
 
 
 def wgr(request):
@@ -404,7 +510,7 @@ def wgr_form(request):
     if request.POST:
         form = WgrReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = WGR.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-wgr_form')
@@ -419,6 +525,19 @@ def wgr_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/wgr_reservation.html', context)
+
+
+def wgr_details(request):
+    queryset=WGR.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'WGR',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/wgr_details.html', context)
 
 
 def wpr(request):
@@ -443,7 +562,7 @@ def wpr_form(request):
     if request.POST:
         form = WprReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = WPR.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-wpr_form')
@@ -470,11 +589,14 @@ def wpr_form(request):
 
 
 def wpr_details(request):
-    items = WPR.objects.all().values()
-    df=pd.DataFrame(items)
+    queryset=WPR.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
 
     context = {
         'header': 'WPR',
+        'df_html': df_html,
     }
     return render(request, 'inventory_app/wpr_details.html', context)
 
@@ -501,7 +623,7 @@ def wrs_form(request):
     if request.POST:
         form = WrsReservationForm(request.POST)
         if form.is_valid():
-            selected_id = form.cleaned_data['Router_Port_id']
+            selected_id = form.cleaned_data['Router_Ports']
             change_status = WRS.objects.filter(Router_Ports=selected_id).update(Port_Status="Reserved")
             form.save()
         # return redirect('inventory_app-wrs_form')
@@ -516,6 +638,19 @@ def wrs_form(request):
         'change_status': change_status,
     }
     return render(request, 'inventory_app/wrs_reservation.html', context)
+
+
+def wrs_details(request):
+    queryset=WRS.objects.all()
+    data = list(queryset.values())
+    df=pd.DataFrame(data)
+    df_html = snapshot.process_dataframe(df)
+
+    context = {
+        'header': 'WRS',
+        'df_html': df_html,
+    }
+    return render(request, 'inventory_app/wrs_details.html', context)
 
 
 def error_500(request):

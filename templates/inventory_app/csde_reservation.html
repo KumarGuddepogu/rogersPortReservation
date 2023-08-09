@@ -15,7 +15,7 @@
             </div>
 
     {% endfor %}
-<form id="post-form" method="POST" action="{% url 'inventory_app-csde_form' %}">
+<form id="myForm" method="POST" action="{% url 'inventory_app-csde_form' %}">
     {% csrf_token %}
     {{ form|crispy}}
     <br><br>
@@ -25,7 +25,7 @@
     {% block json %}
         <script>
         $(document).ready(function() {
-    $('#id_Router_Port_id').select2({
+    $('#id_Router_Ports').select2({
         closeOnSelect:false
     });
 

@@ -1,53 +1,29 @@
 {% extends 'partials/base.html' %}
+{% load static %}
 {% block title %} WPR Details {% endblock %}
 
 {% block content %}
     <br><br><br>
   <h4 class="m-lg-3 font-weight-bold text-dark" style="text-align: center">Overview of {{ header }}</h4>
+
     <br><br>
 
-<div class="container-fluid">
-                     <table class="table table-bordered" id="details" style="width: 50%; text-align: center;">
-                        <thead class="table-success">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th colspan="3">100G</th>
-                            <th colspan="3">10G</th>
-
-                        </tr>
-                        <tr>
-                            <th>Slot</th>
-                            <th>Card_Type</th>
-                            <th>U</th>
-                            <th>R</th>
-                            <th>A</th>
-                            <th>U</th>
-                            <th>R</th>
-                            <th>A</th>
-
-                        </tr>
-                        </thead>
-                         {% for slot in slots %}
-                         <tr>
-{#                             {% for slot in slots %}#}
-                             <td class="bg-white">{{ slot.Slot}}</td>
-                             <td class="bg-white">{{ slot.Module_Description}}</td>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
 
-                         </tr>
-                         {% endfor %}
+      <div >
+      {{ df_html|safe }}
+  </div>
 
 
 
+    <br><br>
 
-                    </table>
-
-        </div>
+{#        </div>#}
  <div class="col-xl-3 col-md-6 mb-4">
 {#                <a href="#" class="custom-card">#}
                 <a href={% url 'inventory_app-wpr' %} class="custom-card">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card my-card shadow">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">

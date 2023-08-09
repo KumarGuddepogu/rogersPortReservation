@@ -15,7 +15,7 @@
             </div>
 
     {% endfor %}
-<form method="POST" action="{% url 'inventory_app-mx_form' %}">
+<form id="myForm" method="POST" action="{% url 'inventory_app-mx_form' %}">
     {% csrf_token %}
     {{ form|crispy}}
     <br><br>
@@ -25,9 +25,17 @@
     {% block json %}
         <script>
         $(document).ready(function() {
-    $('#id_Router_Port_id').select2();
+    $('#id_Router_Ports').select2();
 });
         </script>
+
+        <script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        if (!confirm("Are you sure you want to submit the form?")) {
+            event.preventDefault(); // Cancel form submission
+        }
+    });
+</script>
 
         {% endblock %}
 {% endblock %}

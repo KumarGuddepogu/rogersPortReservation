@@ -5,7 +5,7 @@
 
 {% block reserve-button %}
     <div class="col-sm-2">
-                        <a class="text-decoration-none text-dark" href="{% url 'inventory_app-wgr_form' %}">
+                        <a class="text-decoration-none text-dark" href="{% url 'inventory_app-wpr_form' %}">
                             <div class="card my-card shadow">
                                 <div class="card-body text-center text-success">
                                     <h4>Make Reservation </h4>
@@ -34,6 +34,7 @@ $(document).ready(function (){
                     {"data": "Module_Description"},
                     {"data": "Port_Name"},
                     {"data": "Port_Status"},
+                    {"data": "Categories"},
                     {"data": "Negotiated_Speed"},
                     {"data": "Bandwidth"},
                     {"data": "Optics"},

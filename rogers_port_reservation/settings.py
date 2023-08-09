@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 # import pymysql
 
@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': 'rogers_port_reservation',
         'USER': 'root',
         'PASSWORD': '#Kicktiger1',
-        'PORT': 3308,
-        'HOST': '127.0.0.1',
+        'PORT': 3306,
+        'HOST': 'localhost',
     }
 }
 
@@ -128,12 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
-STATIC_ROOT = (BASE_DIR/"asert/")
-
 STATICFILES_DIRS = [
-    BASE_DIR/"static"
+    BASE_DIR / 'static',
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = (BASE_DIR/'media')
 
@@ -147,3 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'inventory_app-index'
 
 LOGIN_URL= 'user-login'
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 999999999
