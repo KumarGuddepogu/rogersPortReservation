@@ -1,0 +1,40 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %} {{ header }} Details {% endblock %}
+
+{% block content %}
+    <br><br><br>
+  <h4 class="m-lg-3 font-weight-bold text-dark" style="text-align: center">Overview of {{ header }}</h4>
+
+    <br><br>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+      <div >
+      {{ df_html|safe }}
+  </div>
+
+
+
+    <br><br>
+
+{#        </div>#}
+ <div class="col-xl-3 col-md-6 mb-4">
+{#                <a href="#" class="custom-card">#}
+                <a href={% url 'inventory_app-csde' %} class="custom-card">
+                    <div class="card my-card shadow">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-md-center font-weight-bold text-primary text-uppercase mb-1">
+                                        Click to See all Ports
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+{% endblock %}
